@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikasi Cuaca</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input { padding: 8px; }
+        button { padding: 8px 15px; }
+    </style>
+</head>
+<body>
+    <h1>🌦️ Aplikasi Cuaca</h1>
+    <form method="POST">
+        <input type="text" name="city" placeholder="Masukkan nama kota" required>
+        <button type="submit">Cari</button>
+    </form>
+
+    {% if weather %}
+        {% if weather.error %}
+            <p style="color:red;">{{ weather.error }}</p>
+        {% else %}
+            <h2>{{ weather.city }}</h2>
+            <p>{{ weather.temperature }}°C - {{ weather.description }}</p>
+            <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather icon">
+        {% endif %}
+    {% endif %}
+</body>
+</html>
